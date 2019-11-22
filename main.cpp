@@ -20,16 +20,14 @@ int main()
          std::cin >> j;
          if (j == 5) {
              f = new pentagon(std::cin);
-             v.push_back(f);
          }
          else if (j == 6) {
              f = new hexagon(std::cin);
-             v.push_back(f);
          }
          else if (j == 8) {
              f = new octagon(std::cin);
-             v.push_back(f);
          }
+         v.push_back(f);
          break;
       case 2:
           int k;
@@ -39,7 +37,7 @@ int main()
               break;
           }
           else {
-              v[k]->~figure();
+              delete v[k];
               v.erase(v.begin() + k);
           }
           break;
@@ -58,5 +56,8 @@ int main()
           std::cout << " Total area:\n" << s;
           break;
     }
+  }
+  for(auto elem : v) {
+      delete elem;
   }
 }
